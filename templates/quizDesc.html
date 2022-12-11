@@ -1,0 +1,29 @@
+{% extends "studentBase.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}LF Junction Tuition Center - Quiz{% endblock %}
+
+{% block content %}
+<div style="width:850px;height:70px;border:1px solid #000;margin-left: auto;margin-right: auto;display: block; font-size: 30px;margin-top:20px;">
+    <img src="{{url_for('static', filename='logo.png')}}" style="width:70px;height:70px;">
+    Secondary School English Test 1
+</div>
+<div style="width:850px;height:350px;border:1px solid #000;margin-left: auto;margin-right: auto;display: block;margin-top: 30px;">
+    <p>Test Description</p>
+    <hr>
+    <p>The test consists of
+        <ul>
+            <li>Simple generated questions</li>
+            <li>Spelling Questions</li>
+            <li>Fill in the blanks</li>
+        </ul>
+    The duration of this test is 30 minutes.<br>
+    The test consists of 10 mulitple-questions and 5 fill in the blank questions.<br>
+    Click start to begin the test or cancel to return.
+    </p>
+    <hr>
+    <div style="margin-left: 80%;">
+        <a href="/quiz"><button type="submit">Cancel</button></a>
+        <a href="/quizDetail"><button type="submit">Start</button></a>
+    </div>
+</div>
+{% endblock %}

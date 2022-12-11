@@ -1,0 +1,24 @@
+{% extends "adminBase.html" %}
+{% block title %}Library Loan System - Create Customer{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<h1 class="display-4">Create Expense</h1>
+
+<form method="POST" action="/createExpense">
+  <div class="form-group">
+    {{ render_field(form.Invoice_code, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.Payment_amount, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.date_rental, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.Status, class="form-check", style="list-style-type:none") }}
+  </div>
+  <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+{% endblock %}

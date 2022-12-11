@@ -1,0 +1,92 @@
+{% extends "studentBase.html" %}
+{% block title %}LF Junction Tuition Center - Quiz{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="quizStyle.css">
+{% endblock %}
+{% block content %}
+<h1 class="display-4">Login</h1>
+<img src="{{url_for('static', filename='logo.png')}}" style="margin-left: auto;margin-right: auto;display: block;">
+<p style="margin-left: auto;margin-right: auto;font-size: 30px;">Secondary School Tests</p>
+<table style="margin:auto;border: 1px solid black;">
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black;">
+            Math:
+        </td>
+        <td style="border: 1px solid black;">
+            Math Test 1
+        </td>
+        <td style="border: 1px solid black;">
+            Math Test 2
+        </td>
+        <td style="border: 1px solid black;">
+            Math Test 3
+        </td>
+        <td style="border: 1px solid black;">
+            Math Test 4
+        </td>
+        <td style="border: 1px solid black;">
+            Math Test 5
+        </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black;">
+            English:
+        </td>
+        <td style="border: 1px solid black;">
+            <a href="/quizDesc">English Test 1</a>
+        </td>
+        <td style="border: 1px solid black;">
+            English Test 2
+        </td>
+        <td style="border: 1px solid black;">
+            English Test 3
+        </td>
+        <td style="border: 1px solid black;">
+            English Test 4
+        </td>
+        <td style="border: 1px solid black;">
+            English Test 5
+        </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black;">
+            Science:
+        </td>
+        <td style="border: 1px solid black;">
+            Science Test 1
+        </td>
+        <td style="border: 1px solid black;">
+            Science Test 2
+        </td>
+        <td style="border: 1px solid black;">
+            Science Test 3
+        </td>
+        <td style="border: 1px solid black;">
+            Science Test 4
+        </td>
+        <td style="border: 1px solid black;">
+            Science Test 5
+        </td>
+    </tr>
+    <tr style="border: 1px solid black;">
+        <td style="border: 1px solid black;">
+            Mother Tongue:
+        </td>
+        <td style="border: 1px solid black;">
+            Mother Tongue Test 1
+        </td>
+        <td style="border: 1px solid black;">
+            Mother Tongue Test 2
+        </td>
+        <td style="border: 1px solid black;">
+            Mother Tongue Test 3
+        </td>
+        <td style="border: 1px solid black;">
+            Mother Tongue Test 4
+        </td>
+        <td style="border: 1px solid black;">
+            Mother Tongue Test 5
+        </td>
+    </tr>
+</table>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "studentBase.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}LF Junction Tuition Center - Quiz{% endblock %}
+
+{% block content %}
+<div style="width:850px;height:70px;border:1px solid #000;margin-left: auto;margin-right: auto;display: block; font-size: 30px;margin-top:20px;">
+    <img src="{{url_for('static', filename='logo.png')}}" style="width:70px;height:70px;">
+    Secondary School English Test 1
+</div>
+<div style="width:850px;height:350px;border:1px solid #000;margin-left: auto;margin-right: auto;display: block;margin-top: 30px;">
+    <p>Test Results</p>
+    <hr>
+    <p>
+    Test paper name: Secondary School English Test 1
+        <br>
+    Duration: 15 Minutes
+        <br>
+    Total points possible: 10
+    <hr>
+    </p>
+    <table style="width:800px;height:100px;margin:auto;border: 1px solid black;">
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black;">
+                Duration Taken
+            </td>
+            <td style="border: 1px solid black;">
+                Result
+            </td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="border: 1px solid black;">
+                5 Minutes 25 Seconds
+            </td>
+            <td style="border: 1px solid black;">
+                6/10
+            </td>
+        </tr>
+    </table>
+    <br>
+    <div style="margin-left: 80%;">
+        <a href="/quiz"><button type="submit">return</button></a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "studentBase.html" %}
+{% block title %}Library Loan System - Retrieve Schedules{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Retrieve Schedules</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no classes.</p>
+  {% elif count == 1 %}
+  <p>There is 1 class.</p>
+  {% else %}
+  <p>There are {{ count }} classes.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Schedule ID</th>
+        <th>Tutor's Name</th>
+        <th>Subject</th>
+        <th>Level</th>
+        <th>Date</th>
+        <th>Time Slot</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for schedule in schedules_list %}
+      <tr>
+        <td>{{ schedule.get_schedule_id() }}</td>
+        <td>{{ schedule.get_tutor_name() }}</td>
+        <td>{{ schedule.get_subject() }}</td>
+        <td>{{ schedule.get_level() }}</td>
+        <td>{{ schedule.get_date() }}</td>
+        {% if schedule.get_time_slot() == "Morn" %}
+        <td>10am to 12pm</td>
+        {% elif schedule.get_time_slot() == "Aft" %}
+        <td>1pm to 3pm</td>
+        {% elif schedule.get_time_slot() == "Eve" %}
+        <td>4pm to 6pm</td>
+        {% endif %}
+        <td><a href="/updateSchedule/{{schedule.get_schedule_id()}}" class="btn btn-warning">Update</a></td>
+        <td>
+          <form action="{{url_for('delete_schedule', id=schedule.get_schedule_id())}}" method="POST">
+            <!--<input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{schedule.get_tutor_name()}}?');">-->
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal_{{schedule.get_schedule_id()}}">
+              Delete
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal_{{schedule.get_schedule_id()}}">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Delete Confirmation</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    Are you sure you want to delete {{schedule.get_tutor_name()}}?
+                  </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+

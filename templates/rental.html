@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Rental{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Rental</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no Entries.</p>
+  {% elif count == 1 %}
+  <p>There is 1 customer.</p>
+  {% else %}
+  <p>There are {{ count }} customers.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Invoice Code</th>
+        <th>Date of rental</th>
+        <th>Payment Amount</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for expense in expenses_list %}
+        <tr>
+          <td>{{ expense.get_id() }}</td>
+          <td>{{ expense.get_Invoice_Code() }}</td>
+          <td>{{ expense.get_Date_Rental() }}</td>
+          <td>{{ expense.get_Payment_Amount() }}</td>
+          {% if expense.get_Status() == "U" %}
+          <td>Upcoming</td>
+          {% elif expense.get_Status() == "S" %}
+          <td>Due</td>
+          {% elif expense.get_Status() == "P" %}
+          <td>Paid</td>
+          {% else %}
+          <td></td>
+          {% endif %}
+
+          <td><a href="/updateCustomer/{{expense.get_id()}}" class="btn btn-warning">Update</a></td>
+          <td>
+          <form action="{{url_for('delete_customer', id=expense.get_id())}}" method="POST">
+            <!-- Button to Open the Modal -->
+          <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#myModal_{{expense.get_id()}}">
+            Delete
+          </button>
+
+        <div class="modal" id="myModal_{{expense.get_id()}}">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                 <h4 class="modal-title">Delete Confirmation</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                Are you sure you want to delete {{expense.get_Invoice_Code()}}?
+              </div>
+
+              <div class="modal-footer">
+                <input type="submit" value="Delete" class="btn btn-danger">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+          </form>
+        </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

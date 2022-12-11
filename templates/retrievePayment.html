@@ -1,0 +1,49 @@
+{% extends "studentBase.html" %}
+{% block title %}Library Loan System - Retrieve Customers{% endblock %}
+
+{% block content %}
+<h1 class="display-4">Retrieve Payment</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no customers.</p>
+  {% elif count == 1 %}
+  <p>There is 1 customer.</p>
+  {% else %}
+  <p>There are {{ count }} customers.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Customer ID</th>
+        <th>Account Number</th>
+        <th>Account Name</th>
+        <th>security code</th>
+        <th>Expiry Month</th>
+        <th>Expiry Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in customers_list %}
+        <tr>
+          <td>{{ payment.get_user_id() }}</td>
+          <td>{{ customer.get_customer_id() }}</td>
+          <td>{{ customer.get_account_number() }}</td>
+          <td>{{ customer.get_account_name() }}</td>
+          <td>{{ customer.get_security() }}</td>
+          <td>{{ customer.get_expiration_month() }}</td>
+          <td>{{ customer.get_expiration_year() }}</td>
+          <td><a href="#" class="btn btn-warning">Update</a></td>
+          <td>
+            <form action="" method="POST">
+              <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

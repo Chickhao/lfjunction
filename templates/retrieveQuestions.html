@@ -1,0 +1,44 @@
+{% extends "adminBase.html" %}
+{% block title %}Library Loan System - FAQs{% endblock %}
+
+{% block content %}
+<h1 class="display-4">FAQs</h1>
+<div>
+  {% if count == 0 %}
+  <p>There are no FAQ.</p>
+  {% elif count == 1 %}
+  <p>There is 1 FAQ.</p>
+  {% else %}
+  <p>There are {{ count }} FAQs.</p>
+  {% endif %}
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Question ID</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for question in questions_list %}
+        <tr>
+          <td>{{ question.get_question_id() }}</td>
+          <td>{{ question.get_message() }}</td>
+          <td>{{ question.get_date() }}</td>
+          <td><a href="/updateQuestions/{{question.get_question_id()}}" class="btn btn-warning">Answer</a></td>
+          <td>
+            <form action="{{url_for('delete_question', id=question.get_question_id())}}" method="POST">
+              <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete Question ID: {{question.get_question_id()}}?');">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
